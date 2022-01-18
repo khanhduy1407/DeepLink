@@ -1,0 +1,22 @@
+# ant
+bin
+build
+gen
+out
+lib
+
+# intellij
+.idea
+*.iml
+*.hprof
+
+# eclipse
+.classpath
+.project
+.settings
+.DS_Store
+local.properties
+.gradle
+
+# deepLinkDispatch
+dld_match_*.idx

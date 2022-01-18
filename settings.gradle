@@ -1,0 +1,1 @@
+include ':sample', ':deeplink', ':deeplink-base', ':deeplink-processor', ':sample-library', ':sample-kapt-library',':sample-benchmarkable-library', ':sample-benchmark'

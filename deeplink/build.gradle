@@ -1,0 +1,41 @@
+apply plugin: 'com.android.library'
+
+sourceCompatibility = 1.8
+
+apply plugin: 'checkstyle'
+
+apply plugin: 'kotlin-android'
+apply plugin: 'com.vanniktech.maven.publish'
+apply plugin: 'org.jmailen.kotlinter'
+
+dependencies {
+  api project(':deeplink-base')
+  implementation deps.kotlinStdLib
+  implementation deps.okio
+  implementation deps.jsr305
+  implementation deps.localBroadcastManager
+  implementation deps.appCompat
+  testImplementation deps.mockk
+  testImplementation deps.junit
+  testImplementation deps.assertJ
+}
+
+checkstyle {
+  configFile rootProject.file('checkstyle.xml')
+  showViolations true
+  configProperties = ['checkstyle.cache.file': rootProject.file('build/checkstyle.cache')]
+}
+
+android {
+  compileSdkVersion androidConfig.compileSdkVersion
+
+  defaultConfig {
+    minSdkVersion androidConfig.minSdkVersion
+    targetSdkVersion androidConfig.compileSdkVersion
+    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    consumerProguardFiles 'proguard-rules.pro'
+  }
+  testOptions {
+    unitTests.returnDefaultValues = true
+  }
+}
